@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Base : MonoBehaviour
 {
     public static float health;
-    public static int money;
+    public static float money;
+    public TextMeshProUGUI healthUI;
+    public TextMeshProUGUI moneyUI;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,13 +36,13 @@ public class Base : MonoBehaviour
         }
     }
 
-    public static void AddMoney(int cash){
+    public static void AddMoney(float cash){
         money += cash;
         Debug.Log("You have " + money + " money");
         Debug.Log("You have " + health + " life");
     }
 
-    public static int GetMoney(){
+    public static float GetMoney(){
         return money;
     }
 

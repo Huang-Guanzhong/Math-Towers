@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     public GameObject spawner;
     public GameObject enemySprite;
 
-    //Initializer (no longer needed)
+    //Initializer (DEPRECATEDy)
     public Enemy(float speed, float life, GameObject spawn, GameObject enemyObj){
         movementSpeed = speed;
         health = life;

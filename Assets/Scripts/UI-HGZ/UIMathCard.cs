@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class UIMathCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class UIMathCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,IPointerClickHandler
 {
     // Mask Image
     private Image maskImg;
@@ -18,10 +18,31 @@ public class UIMathCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     //Whether to be able to put the math card
     private bool canPlace;
 
+    //Whether needed to place the tower
+    private bool wantPlace;
+
+    //The real tower
+    private GameObject tower;
+
+    //The transparent tower in grid
+    private GameObject towerInGrid;
+
     void Start()
     {
         maskImg = transform.Find("Mask").GetComponent<Image>();
         CanPlace = false;
+    }
+
+    private void Update()
+    {
+        //If Want to place the tower and the tower is not empty
+        if (WantPlace && tower != null)
+        {
+            //Let tower follow the mouse
+            Vector3 mousepoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            tower.transform.position = new Vector3(mousepoint.x, mousepoint.y, 0);
+
+        }
     }
 
     public bool CanPlace { get => canPlace;
@@ -38,6 +59,24 @@ public class UIMathCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             else
             {
                 maskImg.fillAmount = 0;
+            }
+        }
+    }
+
+    public bool WantPlace
+    {       get => wantPlace;
+        set
+        {
+            wantPlace = value;
+            if (wantPlace)
+            {
+                GameObject prefab = TowerManager.Instance.GetTowerForType(TowerType.SampleTower);
+                tower = GameObject.Instantiate(prefab, Vector3.zero, Quaternion.identity, TowerManager.Instance.transform);
+            }
+            else
+            {
+                Destroy(tower.gameObject);
+                tower = null;
             }
         }
     }
@@ -85,6 +124,13 @@ public class UIMathCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         transform.localScale = new Vector2(1f, 1f);
     }
 
-
+    public void OnPointerClick(PointerEventData eventdata)
+    {
+        if (!CanPlace) return;
+        if (!WantPlace)
+        {
+            WantPlace = true;
+        }
+    }
 
 }

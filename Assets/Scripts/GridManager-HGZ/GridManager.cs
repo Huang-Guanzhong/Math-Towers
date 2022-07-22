@@ -58,11 +58,17 @@ public class GridManager : MonoBehaviour
 
     public Vector2 GetGridPointByMouse()
     {
+        return GetGridPointByWorldPos(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+    }
+
+    //Using Worldpoint to get the coordinate of the grid
+    public Vector2 GetGridPointByWorldPos(Vector2 worldPos)
+    {
         float dis = 10000000;
         Vector2 point = new Vector2();
         for (int i = 0; i < gridList.Count; i++)
-        {           
-            if (Vector2.Distance(Camera.main.ScreenToWorldPoint(Input.mousePosition),gridList[i].Position) < dis)
+        {
+            if (Vector2.Distance(worldPos, gridList[i].Position) < dis)
             {
                 dis = Vector2.Distance(Camera.main.ScreenToWorldPoint(Input.mousePosition), gridList[i].Position);
                 point = gridList[i].Position;

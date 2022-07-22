@@ -21,6 +21,8 @@ public class EnemySpawner : MonoBehaviour
         enemyList = new GameObject[10];
 
         deathMoney = 25;
+        // set deathmoney = enemy_life
+        //deathMoney = 25;
     }
 
     // Update is called once per frame
@@ -88,6 +90,8 @@ public class EnemySpawner : MonoBehaviour
 
     public void destroyEnemy(GameObject enemy){
         int enemyNum = 0;
+        //Adds money equal to enemy number
+        Base.AddMoney(enemy.GetComponent<Enemy>().health);
 
         //Finds the index of the enemy we want to destroy
         for (int i = 0; i < numEnemies; i++){
@@ -108,6 +112,6 @@ public class EnemySpawner : MonoBehaviour
         enemyList[numEnemies] = null;
 
         //Adds the deathMoney to the players money
-        Base.AddMoney(deathMoney);
+       // Base.AddMoney(deathMoney);
     }
 }
