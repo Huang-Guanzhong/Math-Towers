@@ -42,6 +42,41 @@ public class UIMathCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             Vector3 mousepoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             tower.transform.position = new Vector3(mousepoint.x, mousepoint.y, 0);
 
+            //If it is close to a grid, a transparent tower should be created
+            if (Vector2.Distance(mousepoint, GridManager.Instance.GetGridPointByMouse()) < 1.5f)
+            {
+                if (towerInGrid == null)
+                {
+                    towerInGrid = GameObject.Instantiate<GameObject>(tower, GridManager.Instance.GetGridPointByMouse(),Quaternion.identity, TowerManager.Instance.transform);
+                    towerInGrid.GetComponent<SampleTowers>().InitForCreate(true);
+                }
+                else
+                {
+                    towerInGrid.transform.position = GridManager.Instance.GetGridPointByMouse();
+                }
+
+            }
+
+            else
+            {
+                if (towerInGrid != null)
+                {
+                    Destroy(towerInGrid.gameObject);
+                    towerInGrid = null;
+                }
+                
+            }
+
+            //Click Mouse left key to place the tower
+            if (Input.GetMouseButtonDown(0))
+            {
+                tower.transform.position = GridManager.Instance.GetGridPointByMouse();
+                tower.GetComponent<SampleTowers>().InitForPlace();
+                tower = null;
+                Destroy(towerInGrid.gameObject);
+                towerInGrid = null;
+                wantPlace = false; 
+            }
         }
     }
 
@@ -63,8 +98,7 @@ public class UIMathCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         }
     }
 
-    public bool WantPlace
-    {       get => wantPlace;
+    public bool WantPlace  { get => wantPlace;
         set
         {
             wantPlace = value;
@@ -72,11 +106,15 @@ public class UIMathCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             {
                 GameObject prefab = TowerManager.Instance.GetTowerForType(TowerType.SampleTower);
                 tower = GameObject.Instantiate(prefab, Vector3.zero, Quaternion.identity, TowerManager.Instance.transform);
+                tower.GetComponent<SampleTowers>().InitForCreate(false);
             }
             else
             {
-                Destroy(tower.gameObject);
-                tower = null;
+                if (tower != null)
+                {
+                    Destroy(tower.gameObject);
+                    tower = null;
+                }              
             }
         }
     }

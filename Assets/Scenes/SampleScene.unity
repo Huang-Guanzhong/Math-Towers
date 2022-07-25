@@ -369,7 +369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 534bb816657f09b438cc2dc51c0b32a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CDTime: 10
+  CDTime: 2
 --- !u!114 &211031286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1137,6 +1137,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1037861013}
   m_CullTransparentMesh: 1
+--- !u!1 &1182956840 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1828121982667888209, guid: f88dfabdd9be30d4d897edd6761c5f2d, type: 3}
+  m_PrefabInstance: {fileID: 1828121981030405608}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1182956843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182956840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21e109ead63e9eb498bb808f875e32e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1288580057
 GameObject:
   m_ObjectHideFlags: 0
@@ -1711,6 +1728,10 @@ PrefabInstance:
     - target: {fileID: 1828121982667888209, guid: f88dfabdd9be30d4d897edd6761c5f2d, type: 3}
       propertyPath: m_Name
       value: Sample Tower
+      objectReference: {fileID: 0}
+    - target: {fileID: 1828121982667888210, guid: f88dfabdd9be30d4d897edd6761c5f2d, type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1828121982667888211, guid: f88dfabdd9be30d4d897edd6761c5f2d, type: 3}
       propertyPath: m_RootOrder

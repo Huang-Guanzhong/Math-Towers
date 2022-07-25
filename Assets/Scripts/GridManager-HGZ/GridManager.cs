@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class GridManager : MonoBehaviour
 {
+    public static GridManager Instance;
     private List<Vector2> pointList = new List<Vector2>();
     [SerializeField]
     private List<Grid> gridList = new List<Grid>();
 
+
+    private void Awake()
+    {
+        Instance = this;
+    }
     void Start()
     {
         //CreateGridsBaseColl();
@@ -70,7 +76,7 @@ public class GridManager : MonoBehaviour
         {
             if (Vector2.Distance(worldPos, gridList[i].Position) < dis)
             {
-                dis = Vector2.Distance(Camera.main.ScreenToWorldPoint(Input.mousePosition), gridList[i].Position);
+                dis = Vector2.Distance(worldPos, gridList[i].Position);
                 point = gridList[i].Position;
             }
         }

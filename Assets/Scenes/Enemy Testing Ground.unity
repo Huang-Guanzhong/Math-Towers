@@ -154,6 +154,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da2fa3539c206434a9be425a65b4afc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthUI: {fileID: 0}
+  moneyUI: {fileID: 0}
 --- !u!61 &178962990
 BoxCollider2D:
   m_ObjectHideFlags: 0
