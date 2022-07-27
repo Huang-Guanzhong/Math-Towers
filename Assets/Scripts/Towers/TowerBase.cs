@@ -33,6 +33,10 @@ public abstract class TowerBase : MonoBehaviour
             spriteRenderer.sortingOrder = -1;
             spriteRenderer.color = new Color(1, 1, 1, 0.5f);
         }
+        else
+        {
+            spriteRenderer.sortingOrder = 1;
+        }
     }
     /// <summary>
     /// Initialization When Placing
