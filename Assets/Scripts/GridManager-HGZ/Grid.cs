@@ -13,10 +13,28 @@ public class Grid
     //Whether already have obejct on the grid, if yes, then cannot add another one
     public bool HaveObject;
 
+    private TowerBase currTowerBase;
+
     public Grid(Vector2 point, Vector2 position, bool haveObject)
     {
         Point = point;
         Position = position;
         HaveObject = haveObject;
+    }
+
+    public TowerBase CurrTowerBase { get => currTowerBase;
+        set
+        {
+           currTowerBase = value;
+            if (currTowerBase = null)
+            {
+                HaveObject = false;
+            }
+            else
+            {
+                HaveObject = true;
+            }
+        } 
+    
     }
 }

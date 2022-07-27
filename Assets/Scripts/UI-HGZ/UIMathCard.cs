@@ -43,26 +43,26 @@ public class UIMathCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         {
             //Let tower follow the mouse
             Vector3 mousepoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Grid grid = GridManager.Instance.GetGridByWorldPos(mousepoint);
             tower.transform.position = new Vector3(mousepoint.x, mousepoint.y, 0);
 
-            //If it is close to a grid, a transparent tower should be created
-            if (Vector2.Distance(mousepoint, GridManager.Instance.GetGridPointByMouse()) < 1.5f)
+            //If it is close to a grid and has not got any object in the grid, a transparent tower should be created
+            if (grid.HaveObject == false && Vector2.Distance(mousepoint, grid.Position) < 1.5f)
             {
                 if (towerInGrid == null)
                 {
-                    towerInGrid = GameObject.Instantiate<GameObject>(tower.gameObject, GridManager.Instance.GetGridPointByMouse(),Quaternion.identity, TowerManager.Instance.transform).GetComponent<TowerBase>();
+                    towerInGrid = GameObject.Instantiate<GameObject>(tower.gameObject, grid.Position, Quaternion.identity, TowerManager.Instance.transform).GetComponent<TowerBase>();
                     towerInGrid.InitForCreate(true);
                 }
                 else
                 {
-                    towerInGrid.transform.position = GridManager.Instance.GetGridPointByMouse();
+                    towerInGrid.transform.position = grid.Position;
                 }
 
                 //Click Mouse left key to place the tower
                 if (Input.GetMouseButtonDown(0))
                 {
-                    tower.transform.position = GridManager.Instance.GetGridPointByMouse();
-                    tower.GetComponent<SampleTowers>().InitForPlace();
+                    tower.GetComponent<SampleTowers>().InitForPlace(grid);
                     tower = null;
                     Destroy(towerInGrid.gameObject);
                     towerInGrid = null;

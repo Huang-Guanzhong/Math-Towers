@@ -70,17 +70,22 @@ public class GridManager : MonoBehaviour
     //Using Worldpoint to get the coordinate of the grid
     public Vector2 GetGridPointByWorldPos(Vector2 worldPos)
     {
+        return GetGridByWorldPos(worldPos).Position;
+    }
+
+    public Grid GetGridByWorldPos(Vector2 worldPos)
+    {
         float dis = 10000000;
-        Vector2 point = new Vector2();
+        Grid grid = null;
         for (int i = 0; i < gridList.Count; i++)
         {
             if (Vector2.Distance(worldPos, gridList[i].Position) < dis)
             {
                 dis = Vector2.Distance(worldPos, gridList[i].Position);
-                point = gridList[i].Position;
+                grid = gridList[i];
             }
         }
-        return point;
+        return grid;
     }
 
     //Using Grid Scipts to Create Grid

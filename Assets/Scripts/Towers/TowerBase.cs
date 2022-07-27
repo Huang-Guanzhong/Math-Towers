@@ -10,6 +10,7 @@ public abstract class TowerBase : MonoBehaviour
 {
     //protected Animator animator;
     protected SpriteRenderer spriteRenderer;
+    protected Grid currGrid;
 
     /// <summary>
     /// FInd relative components
@@ -37,9 +38,12 @@ public abstract class TowerBase : MonoBehaviour
     /// Initialization When Placing
     /// </summary>
     /// <returns></returns>
-    public void InitForPlace()
+    public void InitForPlace(Grid grid)
     {
         //animator.speed = 1;
+        currGrid = grid;
+        currGrid.CurrTowerBase = this;
+        transform.position = grid.Position;
         spriteRenderer.sortingOrder = 0;
         OnInitForPlace();
     }
