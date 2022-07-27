@@ -22,10 +22,13 @@ public class UIMathCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     private bool wantPlace;
 
     //The real tower
-    private GameObject tower;
+    private TowerBase tower;
 
     //The transparent tower in grid
-    private GameObject towerInGrid;
+    private TowerBase towerInGrid;
+
+    //Card corresponding math tower type
+    public TowerType CardTowerType;
 
     void Start()
     {
@@ -47,12 +50,24 @@ public class UIMathCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             {
                 if (towerInGrid == null)
                 {
-                    towerInGrid = GameObject.Instantiate<GameObject>(tower, GridManager.Instance.GetGridPointByMouse(),Quaternion.identity, TowerManager.Instance.transform);
-                    towerInGrid.GetComponent<SampleTowers>().InitForCreate(true);
+                    towerInGrid = GameObject.Instantiate<GameObject>(tower.gameObject, GridManager.Instance.GetGridPointByMouse(),Quaternion.identity, TowerManager.Instance.transform).GetComponent<TowerBase>();
+                    towerInGrid.InitForCreate(true);
                 }
                 else
                 {
                     towerInGrid.transform.position = GridManager.Instance.GetGridPointByMouse();
+                }
+
+                //Click Mouse left key to place the tower
+                if (Input.GetMouseButtonDown(0))
+                {
+                    tower.transform.position = GridManager.Instance.GetGridPointByMouse();
+                    tower.GetComponent<SampleTowers>().InitForPlace();
+                    tower = null;
+                    Destroy(towerInGrid.gameObject);
+                    towerInGrid = null;
+                    WantPlace = false;
+                    CanPlace = false;
                 }
 
             }
@@ -65,18 +80,16 @@ public class UIMathCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
                     towerInGrid = null;
                 }
                 
-            }
-
-            //Click Mouse left key to place the tower
-            if (Input.GetMouseButtonDown(0))
-            {
-                tower.transform.position = GridManager.Instance.GetGridPointByMouse();
-                tower.GetComponent<SampleTowers>().InitForPlace();
-                tower = null;
-                Destroy(towerInGrid.gameObject);
-                towerInGrid = null;
-                wantPlace = false; 
-            }
+            }         
+        }
+        //Right click mouse to cancel the placement status
+        if (Input.GetMouseButtonDown(1))
+        {
+            if (tower != null) Destroy(tower.gameObject);
+            if (towerInGrid != null) Destroy(towerInGrid.gameObject);
+            tower = null;
+            towerInGrid = null;
+            WantPlace=false;
         }
     }
 
@@ -104,9 +117,9 @@ public class UIMathCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             wantPlace = value;
             if (wantPlace)
             {
-                GameObject prefab = TowerManager.Instance.GetTowerForType(TowerType.SampleTower);
-                tower = GameObject.Instantiate(prefab, Vector3.zero, Quaternion.identity, TowerManager.Instance.transform);
-                tower.GetComponent<SampleTowers>().InitForCreate(false);
+                GameObject prefab = TowerManager.Instance.GetTowerForType(CardTowerType);
+                tower = GameObject.Instantiate(prefab, Vector3.zero, Quaternion.identity, TowerManager.Instance.transform).GetComponent<TowerBase>();
+                tower.InitForCreate(false);
             }
             else
             {

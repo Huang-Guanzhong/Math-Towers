@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: GameConf
   m_EditorClassIdentifier: 
   SampleTower: {fileID: 1828121982667888209, guid: f88dfabdd9be30d4d897edd6761c5f2d, type: 3}
+  SampleTower2: {fileID: 6478147059017400986, guid: 9f154dacae6600b44868c9125240d548, type: 3}

@@ -177,6 +177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CDTime: 5
+  CardTowerType: 0
 --- !u!114 &45741935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,6 +371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CDTime: 2
+  CardTowerType: 0
 --- !u!114 &211031286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -462,6 +464,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CDTime: 5
+  CardTowerType: 0
 --- !u!114 &303643372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -629,7 +632,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 534bb816657f09b438cc2dc51c0b32a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CDTime: 10
+  CDTime: 1
+  CardTowerType: 0
 --- !u!114 &422113686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -650,7 +654,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6574c0bb68c9e604ea2378f92930e228, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d286f1cf592afb147a1951dfe12626fc, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1005,7 +1009,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6574c0bb68c9e604ea2378f92930e228, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d286f1cf592afb147a1951dfe12626fc, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1810,3 +1814,60 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f88dfabdd9be30d4d897edd6761c5f2d, type: 3}
+--- !u!1001 &6478147057951856863
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6478147059017400984, guid: 9f154dacae6600b44868c9125240d548, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6478147059017400984, guid: 9f154dacae6600b44868c9125240d548, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 6478147059017400984, guid: 9f154dacae6600b44868c9125240d548, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 6478147059017400984, guid: 9f154dacae6600b44868c9125240d548, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6478147059017400984, guid: 9f154dacae6600b44868c9125240d548, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6478147059017400984, guid: 9f154dacae6600b44868c9125240d548, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6478147059017400984, guid: 9f154dacae6600b44868c9125240d548, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6478147059017400984, guid: 9f154dacae6600b44868c9125240d548, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6478147059017400984, guid: 9f154dacae6600b44868c9125240d548, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6478147059017400984, guid: 9f154dacae6600b44868c9125240d548, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6478147059017400984, guid: 9f154dacae6600b44868c9125240d548, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6478147059017400986, guid: 9f154dacae6600b44868c9125240d548, type: 3}
+      propertyPath: m_Name
+      value: Sample Tower2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9f154dacae6600b44868c9125240d548, type: 3}

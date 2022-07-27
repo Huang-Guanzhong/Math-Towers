@@ -4,7 +4,8 @@ using UnityEngine;
 
 public enum TowerType
 {
-    SampleTower
+    //Different types of math towers
+    SampleTower, SampleTower2
 }
 
 public class TowerManager : MonoBehaviour
@@ -21,8 +22,8 @@ public class TowerManager : MonoBehaviour
         {
             case TowerType.SampleTower:
                 return GameManager.instance.GameConf.SampleTower;
-            default:
-                break;
+            case TowerType.SampleTower2:
+                return GameManager.instance.GameConf.SampleTower2;
         }
         return null;
     }

@@ -10,4 +10,7 @@ public class GameConf : ScriptableObject
 {
     [Tooltip("SampleTower")]
     public GameObject SampleTower;
+
+    [Tooltip("SampleTower2")]
+    public GameObject SampleTower2;
 }
