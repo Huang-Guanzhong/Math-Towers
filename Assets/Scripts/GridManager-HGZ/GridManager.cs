@@ -13,12 +13,12 @@ public class GridManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        CreateGridBaseGrid();
     }
     void Start()
     {
         //CreateGridsBaseColl();
         //CreateGridsBasePointList();
-        CreateGridBaseGrid();
     }
 
     private void Update()
@@ -99,6 +99,23 @@ public class GridManager : MonoBehaviour
                 gridList.Add(new Grid(new Vector2(i, j), transform.position + new Vector3(1.33f * i, 1.63f * j), false));
             }
         }
+    }
+
+    /// <summary>
+    /// By Axix-Y to find a grid, bottom to up, start from o
+    /// </summary>
+    /// <param name=""></param>
+    /// <returns></returns>
+    public Grid GetGridByVerticalNum(int verticalNum)
+    {
+        for (int i = 0; i < gridList.Count; i++)
+        {
+            if (gridList[i].Point == new Vector2(9, verticalNum))
+            {
+                return gridList[i];
+            }
+        }
+        return null;
     }
 }
   
